@@ -1,0 +1,16 @@
+project: asynchronous
+
+tasks:
+  deploy:
+    cmd: |
+      docker rm -f asynchronous 2>/dev/null
+      docker run -d \
+        --name asynchronous \
+        --memory "1g" \
+        --cpus 1 \
+        -p 8080:8080 \
+        docker.io/library/asynchronous:0.0.1-SNAPSHOT
+
+  undeploy:
+    cmd: |
+      docker rm -f asynchronous

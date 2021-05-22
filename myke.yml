@@ -1,0 +1,14 @@
+project: sync-async-experiment
+
+discover:
+  - asynchronous
+  - synchronous
+
+tasks:
+  test-concurrent-1000:
+    cmd: |
+      hey -c 1000 -n 1000 http://localhost:8080/io-bound
+
+  test-concurrent-2000:
+    cmd: |
+      hey -c 2000 -n 2000 http://localhost:8080/io-bound
